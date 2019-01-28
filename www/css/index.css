@@ -1,0 +1,74 @@
+
+.main-content{
+
+}
+
+/* Countries */
+.ddl-countries-content{
+
+}
+
+.ddl-countries{
+
+}
+
+.main-country-content{
+    display: none;
+    width: 100%;
+}
+
+.img-country-flag{
+    display: inline-block;
+    width: 10%;
+}
+
+.txt-country-name{
+    display: inline-block;
+    font-size: 2em;
+}
+
+.txt-country-currency{
+    display: block;
+    font-size: 0.8em;
+    margin-top: 5px;
+}
+
+/* Regions */
+.ddl-regions-content{
+    display: none;
+}
+
+.ddl-regions{
+
+}
+
+.main-region-content{
+    display: none;
+}
+
+.txt-region-name{
+    display: block;
+    font-size: 1.5em;
+}
+
+.txt-region-capital{
+    display: block;
+    font-size: 0.8em;
+}
+
+/* Cities */
+.ddl-cities-content{
+    display: none;
+}
+
+.ddl-cities{
+
+}
+
+.main-city-content{
+    display: none;
+}
+
+.txt-city-name{
+
+}

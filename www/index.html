@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <link rel="stylesheet" type="text/css" href="css/index.css" >
+        <title>Cities</title>
+    </head>
+    <body>
+        <div class="main-content" >
+
+            <!-- Countries -->
+            <div class="ddl-countries-content" >
+                <select id="ddlCountries" class="ddl-countries" ></select>                
+            </div>
+            <div id="mainCountryContent" class="main-country-content" >
+                <img id="imgCountryFlag" class="img-country-flag" />
+                <span id="txtCountryName" class="txt-country-name" ></span>
+                <span class="txt-country-currency" >Currency: <span id="txtCountryCurrency"></span></span>
+            </div>
+
+            <!-- Regions -->
+            <div id="ddlRegionsContent" class="ddl-regions-content" >
+                <select id="ddlRegions" class="ddl-regions" ></select>
+            </div>
+            <div id="mainRegionContent" class="main-region-content" >
+                <span id="txtRegionName" class="txt-region-name" ></span>
+                <span class="txt-region-capital" >Capital: <span id="txtRegionCapital"></span></span>
+            </div>
+
+            <!-- Cities -->
+            <div id="ddlCitiesContent" class="ddl-cities-content" >
+                <select id="ddlCities" class="ddl-cities" ></select>
+            </div>
+            <div id="mainCityContent" class="main-city-content" >
+                <span id="txtCityName" class="txt-city-name" ></span>
+            </div>
+
+        </div>
+
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+    </body>
+</html>
