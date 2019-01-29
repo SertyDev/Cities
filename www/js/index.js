@@ -153,7 +153,7 @@ var getRegionDetails = function(countryWikiDataId, regionIsoCode){
             }else{
                 $("#txtContentCapital").css("display", "none");
             }
-            
+
             if(result.data.numCities > 0){
                 $("#alertCities").css("display", "none");
                 getCities(countryWikiDataId, regionIsoCode);
@@ -222,11 +222,45 @@ var getCityDetails = function(cityId){
             $("#txtCityName").text(result.data.city);
             $("#txtCityPopulation").text(result.data.population);
             $("#mainCityContent").css("display", "block");
+            if(result.data.latitude != null && result.data.latitude != String.empty && result.data.longitude != null && result.data.longitude != String.empty){
+                generateMap(result.data.city, result.data.latitude, result.data.longitude);
+            }
         },
         error: function(error){
             console.log("ERROR - getCityDetails");
             console.log(error);
         }
+    });
+}
+
+var generateMap = function(city, latitude, longitude){
+    plugin.google.maps.environment.setEnv({
+        'API_KEY_FOR_BROWSER_RELEASE': 'AIzaSyDlzyO-toLGDNiXPgkWC3GEgv_4OaOMjjY',
+        'API_KEY_FOR_BROWSER_DEBUG': 'AIzaSyDlzyO-toLGDNiXPgkWC3GEgv_4OaOMjjY'
+    });
+
+    var coords = {"lat": latitude, "lng": longitude};
+    var mapCanvas = document.getElementById("mapCanvas");
+
+    var map = plugin.google.maps.Map.getMap(mapCanvas, {
+        'camera': {
+            'latLng': coords,
+            'zoom': 10
+        }
+    });
+
+    map.clear();
+
+    map.moveCamera({
+        target: coords,
+        zoom: 10
+    });
+
+    map.addMarker({
+        'position': coords,
+        'title': city
+    }, function(marker) {    
+        marker.showInfoWindow();    
     });
 }
 

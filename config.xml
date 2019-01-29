@@ -2,11 +2,16 @@
 <widget id="com.sertydev.cities" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Cities</name>
     <description>
-        A blank PhoneGap app.
     </description>
     <author email="support@phonegap.com" href="http://phonegap.com">
-        PhoneGap Team
     </author>
     <content src="index.html" />
     <access origin="*" />
+    <engine name="browser" spec="~5.0.4" />
+    
+    <plugin name="cordova-plugin-googlemaps">
+        <variable name="API_KEY_FOR_ANDROID" value="AIzaSyDlzyO-toLGDNiXPgkWC3GEgv_4OaOMjjY" />
+        <variable name="API_KEY_FOR_IOS" value="AIzaSyDlzyO-toLGDNiXPgkWC3GEgv_4OaOMjjY" />
+    </plugin>
+    <preference name="phonegap-version" value="cli-8.2.2" />
 </widget>

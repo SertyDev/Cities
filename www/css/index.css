@@ -142,3 +142,8 @@ select{
     font-size: 1em;
     color: #007f00;
 }
+
+.map-canvas{
+    width: 100%;
+    height: 200px;
+}
