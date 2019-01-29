@@ -7,6 +7,7 @@ $(function(){
         $("#ddlRegionsContent").css("display", "none");
         $("#ddlRegions").empty();
         $("#mainRegionContent").css("display", "none");
+        $("#alertCities").css("display", "none");
         $("#ddlCitiesContent").css("display", "none");
         $("#ddlCities").empty();
         $("#mainCityContent").css("display", "none");
@@ -19,6 +20,7 @@ $(function(){
     $("#ddlRegions").on('change', function(){
         // Clean Region details and Cities section
         $("#mainRegionContent").css("display", "none");
+        $("#alertCities").css("display", "none");
         $("#ddlCitiesContent").css("display", "none");
         $("#ddlCities").empty();
         $("#mainCityContent").css("display", "none");
@@ -31,6 +33,7 @@ $(function(){
 
     $("#ddlCities").on('change', function(){
         // Clean City details
+        $("#alertCities").css("display", "none");
         $("#mainCityContent").css("display", "none");
 
         var selectedValue = this.value;
@@ -144,12 +147,20 @@ var getRegionDetails = function(countryWikiDataId, regionIsoCode){
             console.log("SUCCESS - getRegionDetails");
             console.log(result);
             $("#txtRegionName").text(result.data.name);
-            $("#txtRegionCapital").text(result.data.capital);
+            if(result.data.capital != null && result.data.capital != String.empty){
+                $("#txtContentCapital").css("display", "block");
+                $("#txtRegionCapital").text(result.data.capital);
+            }else{
+                $("#txtContentCapital").css("display", "none");
+            }
+            
             if(result.data.numCities > 0){
+                $("#alertCities").css("display", "none");
                 getCities(countryWikiDataId, regionIsoCode);
             }else{
                 $("#ddlCitiesContent").css("display", "none");
                 $("#ddlCities").empty();
+                $("#alertCities").css("display", "block");
             }
             $("#mainRegionContent").css("display", "block");
         },

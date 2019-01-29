@@ -1,6 +1,18 @@
 
-.main-content{
+html {
+    height: 100%;
+}
 
+body {
+    position: relative;
+    min-height: 100%;
+    background-color: #FFC04C;
+    font-family: 'Baloo Thambi', cursive;
+    margin: 0;
+}
+
+.main-content{
+    padding: 8px;
 }
 
 select{
@@ -8,8 +20,17 @@ select{
     height: 3em;
     border-radius: 10px;
     padding: 0 5px;
-    font-family: fantasy;
-    letter-spacing: 3px;
+    font-family: 'Baloo Thambi', cursive;
+    letter-spacing: 2px;
+    background-color: #ffedcc;
+}
+
+.txt-legend{
+    position: absolute;
+    bottom: 3px;
+    font-size: 9px;
+    font-style: italic;
+    left: 3px;
 }
 
 /* Countries */
@@ -31,17 +52,29 @@ select{
     display: inline-block;
     width: 10%;
     opacity: 0.1;
+    margin-right: 6px;
+}
+
+.txt-content{
+
 }
 
 .txt-country-name{
     display: inline-block;
     font-size: 2em;
+    position: relative;
+    bottom: 3px;
+}
+
+.txt-country-currency-lbl{
+    display: inline-block;
+    font-size: 0.8em;
 }
 
 .txt-country-currency{
-    display: block;
-    font-size: 0.8em;
-    margin-top: 5px;
+    display: inline-block;
+    font-size: 1em;    
+    color: navy;
 }
 
 /* Regions */
@@ -64,12 +97,22 @@ select{
     font-size: 1.5em;
 }
 
-.txt-region-capital{
-    display: block;
+.txt-region-capital-lbl{
+    display: inline-block;
     font-size: 0.8em;
 }
 
+.txt-region-capital{
+    display: inline-block;
+    font-size: 1em;
+    color: #E34262;
+}
+
 /* Cities */
+.alert-cities{
+    display: none;
+}
+
 .ddl-cities-content{
     display: none;
     margin-bottom: 10px;
@@ -89,7 +132,13 @@ select{
     font-size: 1.5em;
 }
 
-.txt-city-population{
-    display: block;
+.txt-city-population-lbl{
+    display: inline-block;
     font-size: 0.8em;
+}
+
+.txt-city-population{
+    display: inline-block;
+    font-size: 1em;
+    color: #007f00;
 }

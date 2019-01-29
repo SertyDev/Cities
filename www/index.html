@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
         <link rel="stylesheet" type="text/css" href="css/index.css" >
+        <link href="https://fonts.googleapis.com/css?family=Baloo+Thambi" rel="stylesheet">
         <title>Cities</title>
     </head>
     <body>
@@ -16,7 +17,10 @@
             <div id="mainCountryContent" class="main-country-content" >
                 <img id="imgCountryFlag" class="img-country-flag" />
                 <span id="txtCountryName" class="txt-country-name" ></span>
-                <span class="txt-country-currency" >Currency: <span id="txtCountryCurrency"></span></span>
+                <div class="txt-content" >
+                    <span class="txt-country-currency-lbl" >Currency: </span>
+                    <span id="txtCountryCurrency" class="txt-country-currency" ></span>
+                </div>                
             </div>
 
             <!-- Regions -->
@@ -25,19 +29,28 @@
             </div>
             <div id="mainRegionContent" class="main-region-content" >
                 <span id="txtRegionName" class="txt-region-name" ></span>
-                <span class="txt-region-capital" >Capital: <span id="txtRegionCapital"></span></span>
+                <div id="txtContentCapital" class="txt-content">
+                    <span class="txt-region-capital-lbl" >Capital: </span>
+                    <span id="txtRegionCapital" class="txt-region-capital" ></span>
+                </div>                
             </div>
 
             <!-- Cities -->
+            <span id="alertCities" class="alert-cities" >Sorry, I do not have cities of this region :( <br/> The problem is mine, every city is important!</span>
             <div id="ddlCitiesContent" class="ddl-cities-content" >
                 <select id="ddlCities" class="ddl-cities" ></select>
             </div>
             <div id="mainCityContent" class="main-city-content" >
                 <span id="txtCityName" class="txt-city-name" ></span>
-                <span class="txt-city-population" >Population: <span id="txtCityPopulation" ></span></span>
+                <div class="txt-content">
+                    <span class="txt-city-population-lbl" >Population: </span>
+                    <span id="txtCityPopulation" class="txt-city-population" ></span>
+                </div>                
             </div>
-
+            
         </div>
+
+        <span class="txt-legend" >Regions can be states, provinces, districts, or otherwise major political divisions.</span>
 
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
