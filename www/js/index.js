@@ -1,17 +1,40 @@
 
 $(function(){
     // Events
-    $("#ddlCountries").on('change', function(){
+    $("#ddlCountries").on('change', function(){        
+        // Clean Country details, Regions section and Cities section
+        $("#mainCountryContent").css("display", "none");
+        $("#ddlRegionsContent").css("display", "none");
+        $("#ddlRegions").empty();
+        $("#mainRegionContent").css("display", "none");
+        $("#ddlCitiesContent").css("display", "none");
+        $("#ddlCities").empty();
+        $("#mainCityContent").css("display", "none");
+
         var selectedValue = this.value;
         getCountryDetails(selectedValue);
         getRegions(selectedValue);
     });
     
     $("#ddlRegions").on('change', function(){
+        // Clean Region details and Cities section
+        $("#mainRegionContent").css("display", "none");
+        $("#ddlCitiesContent").css("display", "none");
+        $("#ddlCities").empty();
+        $("#mainCityContent").css("display", "none");
+
         var countryWikiDataId = $("#ddlCountries").val();
         var selectedValue = this.value;
         getRegionDetails(countryWikiDataId, selectedValue);
         // getCities(countryWikiDataId, selectedValue);
+    });
+
+    $("#ddlCities").on('change', function(){
+        // Clean City details
+        $("#mainCityContent").css("display", "none");
+
+        var selectedValue = this.value;
+        getCityDetails(selectedValue);
     });
 
     getAllCountries();
@@ -151,7 +174,7 @@ var getCities = function(countryWikiDataId, regionIsoCode){
             result.data.map(function(city, index){
                 if(city.type === 'CITY'){
                     var option = document.createElement('option');
-                    option.value = city.city;
+                    option.value = city.id;
                     option.setAttribute('wikiDataId', city.wikiDataId);
                     option.setAttribute('id', city.id);
                     option.setAttribute('city', city.city);
@@ -170,6 +193,27 @@ var getCities = function(countryWikiDataId, regionIsoCode){
         },
         error: function(error){
             console.log("ERROR - getCities");
+            console.log(error);
+        }
+    });
+}
+
+var getCityDetails = function(cityId){
+    $.ajax({
+        url: 'https://wft-geo-db.p.rapidapi.com/v1/geo/cities/' + cityId,
+        type: "GET",
+        headers: {
+            'X-RapidAPI-Key': 'f2f3fe7fc6msh7d3b7d213e65ea9p1254d9jsn6802cfa460ed'
+        },
+        success: function(result){
+            console.log("SUCCESS - getCityDetails");
+            console.log(result);
+            $("#txtCityName").text(result.data.city);
+            $("#txtCityPopulation").text(result.data.population);
+            $("#mainCityContent").css("display", "block");
+        },
+        error: function(error){
+            console.log("ERROR - getCityDetails");
             console.log(error);
         }
     });

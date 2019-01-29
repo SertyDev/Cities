@@ -3,9 +3,18 @@
 
 }
 
+select{
+    width: 100%;
+    height: 3em;
+    border-radius: 10px;
+    padding: 0 5px;
+    font-family: fantasy;
+    letter-spacing: 3px;
+}
+
 /* Countries */
 .ddl-countries-content{
-
+    margin-bottom: 10px;
 }
 
 .ddl-countries{
@@ -15,11 +24,13 @@
 .main-country-content{
     display: none;
     width: 100%;
+    margin-bottom: 10px;
 }
 
 .img-country-flag{
     display: inline-block;
     width: 10%;
+    opacity: 0.1;
 }
 
 .txt-country-name{
@@ -36,6 +47,7 @@
 /* Regions */
 .ddl-regions-content{
     display: none;
+    margin-bottom: 10px;
 }
 
 .ddl-regions{
@@ -44,6 +56,7 @@
 
 .main-region-content{
     display: none;
+    margin-bottom: 10px;
 }
 
 .txt-region-name{
@@ -59,6 +72,7 @@
 /* Cities */
 .ddl-cities-content{
     display: none;
+    margin-bottom: 10px;
 }
 
 .ddl-cities{
@@ -67,8 +81,15 @@
 
 .main-city-content{
     display: none;
+    margin-bottom: 10px;
 }
 
 .txt-city-name{
+    display: block;
+    font-size: 1.5em;
+}
 
+.txt-city-population{
+    display: block;
+    font-size: 0.8em;
 }
