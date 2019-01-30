@@ -11,6 +11,9 @@
       "PACKAGE_NAME": "com.sertydev.cities"
     },
     "cordova-plugin-googlemaps": {
+      "API_KEY_FOR_ANDROID": "AIzaSyDlzyO-toLGDNiXPgkWC3GEgv_4OaOMjjY",
+      "PLAY_SERVICES_VERSION": "15.0.1",
+      "ANDROID_SUPPORT_V4_VERSION": "27.+",
       "PACKAGE_NAME": "com.sertydev.cities"
     },
     "cordova-plugin-whitelist": {

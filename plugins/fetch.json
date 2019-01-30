@@ -1,8 +1,42 @@
 {
+  "cordova-admob": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-admob@~5.1.0"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-connectivity-monitor": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-connectivity-monitor"
+    },
+    "is_top_level": false,
+    "variables": {}
+  },
+  "cordova-play-services-version-adapter": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-play-services-version-adapter"
+    },
+    "is_top_level": false,
+    "variables": {}
+  },
   "cordova-plugin-googlemaps": {
     "source": {
       "type": "registry",
       "id": "cordova-plugin-googlemaps"
+    },
+    "is_top_level": true,
+    "variables": {
+      "API_KEY_FOR_ANDROID": "AIzaSyDlzyO-toLGDNiXPgkWC3GEgv_4OaOMjjY"
+    }
+  },
+  "cordova-plugin-whitelist": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-whitelist@1.3.3"
     },
     "is_top_level": true,
     "variables": {}

@@ -1,6 +1,18 @@
 
-$(function(){
-    // Events
+function onDeviceReady() {
+    document.removeEventListener('deviceready', onDeviceReady, false);
+
+    // Set AdMobAds options:
+    admob.setOptions({
+        publisherId: "ca-app-pub-1591850117134901~2445809522",
+        interstitialAdId: "ca-app-pub-1591850117134901/3291400607",
+        bannerAtTop: false,
+        isTesting: true,
+        autoShowBanner: true
+    });
+
+    admob.createBannerView();
+
     $("#ddlCountries").on('change', function(){        
         // Clean Country details, Regions section and Cities section
         $("#mainCountryContent").css("display", "none");
@@ -42,9 +54,11 @@ $(function(){
 
     getAllCountries();
 
-});
+}
 
-var getAllCountries = function(){
+document.addEventListener("deviceready", onDeviceReady, false);
+
+function getAllCountries(){
     $.ajax({
         url: 'https://wft-geo-db.p.rapidapi.com/v1/geo/countries?limit=200',
         type: "GET",
@@ -77,7 +91,7 @@ var getAllCountries = function(){
     });
 }
 
-var getCountryDetails = function(countryWikiDataId){
+function getCountryDetails(countryWikiDataId){
     $.ajax({
         url: 'https://wft-geo-db.p.rapidapi.com/v1/geo/countries/' + countryWikiDataId,
         type: "GET",
@@ -99,7 +113,7 @@ var getCountryDetails = function(countryWikiDataId){
     });
 }
 
-var getRegions = function(countryWikiDataId){
+function getRegions(countryWikiDataId){
     // Regions can be states, provinces, districts, or otherwise major political divisions.
     $.ajax({
         url: 'https://wft-geo-db.p.rapidapi.com/v1/geo/countries/' + countryWikiDataId + '/regions?limit=200',
@@ -136,7 +150,7 @@ var getRegions = function(countryWikiDataId){
     });
 }
 
-var getRegionDetails = function(countryWikiDataId, regionIsoCode){
+function getRegionDetails(countryWikiDataId, regionIsoCode){
     $.ajax({
         url: 'https://wft-geo-db.p.rapidapi.com/v1/geo/countries/' + countryWikiDataId + '/regions/' + regionIsoCode,
         type: "GET",
@@ -171,7 +185,7 @@ var getRegionDetails = function(countryWikiDataId, regionIsoCode){
     });
 }
 
-var getCities = function(countryWikiDataId, regionIsoCode){
+function getCities(countryWikiDataId, regionIsoCode){
     $.ajax({
         url: 'https://wft-geo-db.p.rapidapi.com/v1/geo/countries/' + countryWikiDataId + '/regions/' + regionIsoCode + '/cities?limit=2000',
         type: "GET",
@@ -209,7 +223,7 @@ var getCities = function(countryWikiDataId, regionIsoCode){
     });
 }
 
-var getCityDetails = function(cityId){
+function getCityDetails(cityId){
     $.ajax({
         url: 'https://wft-geo-db.p.rapidapi.com/v1/geo/cities/' + cityId,
         type: "GET",
@@ -221,6 +235,7 @@ var getCityDetails = function(cityId){
             console.log(result);
             $("#txtCityName").text(result.data.city);
             $("#txtCityPopulation").text(result.data.population);
+            getCityDateTime(cityId);
             $("#mainCityContent").css("display", "block");
             if(result.data.latitude != null && result.data.latitude != String.empty && result.data.longitude != null && result.data.longitude != String.empty){
                 generateMap(result.data.city, result.data.latitude, result.data.longitude);
@@ -233,7 +248,30 @@ var getCityDetails = function(cityId){
     });
 }
 
-var generateMap = function(city, latitude, longitude){
+function getCityDateTime(cityId){
+    $.ajax({
+        url: 'https://wft-geo-db.p.rapidapi.com/v1/geo/cities/' + cityId + '/dateTime',
+        type: "GET",
+        headers: {
+            'X-RapidAPI-Key': 'f2f3fe7fc6msh7d3b7d213e65ea9p1254d9jsn6802cfa460ed'
+        },
+        success: function(result){
+            console.log("SUCCESS - getCityDateTime");
+            console.log(result);
+            var isoDateTime = result.data;
+            var date = isoDateTime.split('T')[0];
+            var time = isoDateTime.split('T')[1].split('.')[0];
+            $("#txtCityDate").text(date);
+            $("#txtCityTime").text(time);
+        },
+        error: function(error){
+            console.log("ERROR - getCityDateTime");
+            console.log(error);
+        }
+    });
+}
+
+function generateMap(city, latitude, longitude){
     plugin.google.maps.environment.setEnv({
         'API_KEY_FOR_BROWSER_RELEASE': 'AIzaSyDlzyO-toLGDNiXPgkWC3GEgv_4OaOMjjY',
         'API_KEY_FOR_BROWSER_DEBUG': 'AIzaSyDlzyO-toLGDNiXPgkWC3GEgv_4OaOMjjY'
@@ -262,6 +300,8 @@ var generateMap = function(city, latitude, longitude){
     }, function(marker) {    
         marker.showInfoWindow();    
     });
+
+    $("body").css("cssText", "background-color: #FFC04C !important;");
 }
 
 function sortSelectOptions(selectElement) {
