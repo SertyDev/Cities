@@ -40,7 +40,6 @@ function onDeviceReady() {
         var countryWikiDataId = $("#ddlCountries").val();
         var selectedValue = this.value;
         getRegionDetails(countryWikiDataId, selectedValue);
-        // getCities(countryWikiDataId, selectedValue);
     });
 
     $("#ddlCities").on('change', function(){
@@ -301,7 +300,7 @@ function generateMap(city, latitude, longitude){
         marker.showInfoWindow();    
     });
 
-    $("body").css("cssText", "background-color: #FFC04C !important;");
+    // $("body").css("cssText", "background-color: #FFC04C !important;");
 }
 
 function sortSelectOptions(selectElement) {
